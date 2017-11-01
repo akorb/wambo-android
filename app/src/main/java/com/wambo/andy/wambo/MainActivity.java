@@ -10,6 +10,8 @@ import android.hardware.SensorManager;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Surface;
 import android.view.View;
 import android.widget.TextView;
 
@@ -19,7 +21,6 @@ public class MainActivity extends Activity implements SensorEventListener
     Sensor mGyroscope;
 
     boolean isReversed = false;
-
     MediaPlayer mpMini;
     MediaPlayer mpWambo;
 
@@ -30,14 +31,13 @@ public class MainActivity extends Activity implements SensorEventListener
         setContentView(R.layout.activity_main);
 
         TextView tv = ((TextView)findViewById(R.id.tvWambo));
-        Resources res = getResources();
-        tv.setTextColor(res.getColor(R.color.violet));
+
+        tv.setTextColor(getApplicationContext().getColor(R.color.violet));
         tv.setRotation(180f);
 
         mSensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
         mGyroscope = mSensorManager
                 .getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR);
-
         mpMini = MediaPlayer.create(this, R.raw.mini);
         mpWambo = MediaPlayer.create(this, R.raw.wambo);
     }
@@ -55,6 +55,8 @@ public class MainActivity extends Activity implements SensorEventListener
         // Sensors return 3 values, one for each axis.
 
         isReversed = event.values[0] <= 0.0f;
+
+        Log.d("SensorChanged", Float.toString(event.values[0]));
     }
 
     @Override
