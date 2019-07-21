@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="${relativePackage}.${activityClass}" >
+    tools:context="com.wambo.andy.wambo.MainActivity" >
 
     <TextView
         android:id="@+id/tvWambo"
@@ -12,8 +12,8 @@
         android:clickable="true"
         android:gravity="center"
         android:onClick="tvWambo_onClick"
-        android:text="@string/Wambo"
-        android:textColorLink="@color/violet"
+        android:text="@string/wambo"
+        android:textColor="@color/violet"
         android:textSize="200sp"
         android:textStyle="bold"
         android:focusable="true" />
