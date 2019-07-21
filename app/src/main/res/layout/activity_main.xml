@@ -15,6 +15,7 @@
         android:text="@string/Wambo"
         android:textColorLink="@color/violet"
         android:textSize="200sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:focusable="true" />
 
 </RelativeLayout>
