@@ -66,7 +66,7 @@ public class MainActivity extends Activity implements SensorEventListener
 
     public void tvWambo_onClick(View v)
     {
-        boolean isReversed = lastValue <= 0.0f;
+        boolean isReversed = lastValue < 0.0f;
 
         if (isReversed)
         {
