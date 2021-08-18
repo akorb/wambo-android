@@ -5,5 +5,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "SimpleCidGetter"
+rootProject.name = "Wambo"
 include ':app'
