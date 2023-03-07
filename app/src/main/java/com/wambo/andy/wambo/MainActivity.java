@@ -8,9 +8,11 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
-public class MainActivity extends Activity implements SensorEventListener
+public class MainActivity extends Activity implements SensorEventListener, View.OnClickListener
 {
     private SensorManager sensorManager;
     private Sensor gyroscope;
@@ -30,12 +32,13 @@ public class MainActivity extends Activity implements SensorEventListener
         gyroscope = sensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR);
         mpMini = MediaPlayer.create(this, R.raw.mini);
         mpWambo = MediaPlayer.create(this, R.raw.wambo);
+        TextView tvWambo = findViewById(R.id.tvWambo);
+        tvWambo.setOnClickListener(this);
     }
 
     @Override
     public final void onAccuracyChanged(Sensor sensor, int accuracy)
     {
-        // Do something here if sensor accuracy changes.
     }
 
     @Override
@@ -64,19 +67,27 @@ public class MainActivity extends Activity implements SensorEventListener
         sensorManager.unregisterListener(this);
     }
 
-    public void tvWambo_onClick(View v)
-    {
-        boolean isReversed = lastValue < 0.0f;
+    private void playWambo() {
+        mpWambo.seekTo(0);
+        mpWambo.start();
+    }
 
-        if (isReversed)
+    private void playMini() {
+        mpMini.seekTo(0);
+        mpMini.start();
+    }
+
+    @Override
+    public void onClick(View view) {
+        boolean phoneIsUpsideDown = lastValue < 0.0f;
+
+        if (phoneIsUpsideDown)
         {
-            mpWambo.seekTo(0);
-            mpWambo.start();
+            playWambo();
         }
         else
         {
-            mpMini.seekTo(0);
-            mpMini.start();
+            playMini();
         }
     }
 }
