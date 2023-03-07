@@ -8,14 +8,13 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends Activity implements SensorEventListener, View.OnClickListener
 {
     private SensorManager sensorManager;
-    private Sensor gyroscope;
+    private Sensor sensor;
 
     private MediaPlayer mpMini;
     private MediaPlayer mpWambo;
@@ -29,7 +28,7 @@ public class MainActivity extends Activity implements SensorEventListener, View.
         setContentView(R.layout.activity_main);
 
         sensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
-        gyroscope = sensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR);
+        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_GRAVITY);
         mpMini = MediaPlayer.create(this, R.raw.mini);
         mpWambo = MediaPlayer.create(this, R.raw.wambo);
         TextView tvWambo = findViewById(R.id.tvWambo);
@@ -44,19 +43,16 @@ public class MainActivity extends Activity implements SensorEventListener, View.
     @Override
     public final void onSensorChanged(SensorEvent event)
     {
-        // The gyroscope sensor returns a single value.
-        // Sensors return 3 values, one for each axis.
+        // Log.d("SensorChanged", Arrays.toString(event.values));
 
-        lastValue = event.values[0];
-
-        // Log.d("SensorChanged", Float.toString(lastValue));
+        lastValue = event.values[1];
     }
 
     @Override
     protected void onResume()
     {
         super.onResume();
-        sensorManager.registerListener(this, gyroscope,
+        sensorManager.registerListener(this, sensor,
                 SensorManager.SENSOR_DELAY_NORMAL);
     }
 
