@@ -4,7 +4,6 @@ plugins {
 
 android {
     compileSdk 30
-    buildToolsVersion "30.0.2"
     defaultConfig {
         applicationId "com.wambo.andy.wambo"
         minSdk 14
@@ -19,6 +18,7 @@ android {
             shrinkResources true
         }
     }
+    namespace 'com.wambo.andy.wambo'
 }
 
 dependencies {
