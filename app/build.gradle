@@ -3,22 +3,22 @@ plugins {
 }
 
 android {
-    compileSdk 36
+    compileSdk = 36
     defaultConfig {
-        applicationId "com.wambo.andy.wambo"
-        minSdk 14
-        targetSdk 36
-        versionCode 4
-        versionName "1.2"
+        applicationId = "com.wambo.andy.wambo"
+        minSdk = 14
+        targetSdk = 36
+        versionCode = 4
+        versionName = "1.2"
     }
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled = true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            shrinkResources true
+            shrinkResources = true
         }
     }
-    namespace 'com.wambo.andy.wambo'
+    namespace = 'com.wambo.andy.wambo'
 }
 
 dependencies {
