@@ -16,6 +16,9 @@ android {
             minifyEnabled = true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             shrinkResources = true
+            optimization {
+                enable = true // Enables code and resource optimizations.
+            }
         }
     }
     namespace = 'com.wambo.andy.wambo'
