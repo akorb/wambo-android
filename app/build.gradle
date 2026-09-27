@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    compileSdk = 36
+    compileSdk = 37
     defaultConfig {
         applicationId = "com.wambo.andy.wambo"
         minSdk = 14
-        targetSdk = 36
+        targetSdk = 37
         versionCode = 5
         versionName = "1.3"
     }
